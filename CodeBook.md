@@ -38,3 +38,16 @@ The dataset includes the following files:
 3. Uses descriptive activity names to name the activities in the data set
 4. Appropriately labels the data set with descriptive variable names.
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+# Variables
+
+- datasetTest -> Tidy Dataset with all Test files combined
+- datasetTrain -> Tidy Dataset with all Train files combined
+- datasetTotal -> Tidy Dataset with two datasets above merged
+- SubsetMeanStd -> Tidy Dataset from datasetTotal with subject, activity, and only mean and standard deviation features
+- SubsetMeanStdGrouped -> Tidy Dataset from SubsetMeanStd group by subject and activity. One record for each activity and each subject
+- SubsetMeanStdGroupedAvg -> Tidy Dataset from SubsetMeanStd summarising all features by average
+
+# Results
+
+Run "run_analysis.R" script to perform the analysis. The results will be located in the next file: "SubsetMeanStdGroupedAvg.txt"
