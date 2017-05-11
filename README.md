@@ -43,20 +43,25 @@ activityLabels<-read.table("activity_labels.txt",col.names=c("activityId","activ
 SubsetMeanStd <- merge(x=SubsetTotal,y=activityLabels,all=TRUE)
 
 #Exclude the activityId field
+
 SubsetMeanStd <- select(SubsetMeanStd , -activityId)
 
 # 4.Appropriately labels the data set with descriptive variable names.
 
 #Get column names
+
 columnNames <-colnames(SubsetMeanStd)
 
 #Replace . with a space
+
 columnNames <-gsub("\\.", " ", columnNames) 
 
 #Delete all spaces in final
+
 columnNames <- gsub("[[:space:]]+$","",columnNames)
 
 #Replace several spaces by only one
+
 columnNames <- gsub("[[:space:]]+"," ",columnNames)
 
 columnNames <- gsub("mean", "Mean", columnNames)
@@ -67,18 +72,23 @@ columnNames <- gsub("BodyBody", "Body", columnNames)
 columnNames<-gsub("tBody", "Time Body", columnNames)
 
 #Modify column names in dataset
+
 colnames(SubsetMeanStd) <- columnNames 
 
 # 5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 #Create a table (Dplyr)
+
 SubsetMeanStdGrouped<- tbl_df(SubsetMeanStd)
 
 #Group by subject and activity
+
 SubsetMeanStdGrouped <-group_by(SubsetMeanStdGrouped, subject, activity)
 
 #Calculate the mean for all features 
+
 SubsetMeanStdGroupedAvg<- summarise_each(SubsetMeanStdGrouped, funs(mean))
 
 #Write final file
+
 write.table(SubsetMeanStdGroupedAvg,file="SubsetMeanStdGroupedAvg.txt",row.names=FALSE)
