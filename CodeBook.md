@@ -51,3 +51,5 @@ The dataset includes the following files:
 # Results
 
 Run "run_analysis.R" script to perform the analysis. The results will be located in the next file: "SubsetMeanStdGroupedAvg.txt"
+
+The "README.md" files describes how the script works and how the analysis has been done.
